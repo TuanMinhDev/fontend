@@ -1,6 +1,7 @@
+import Navigation from "./layout/Navigation";
 const Layout = () =>{
     return (
-        <h1>Layout</h1>
+        <Navigation/>
     )
 }
 export default Layout;

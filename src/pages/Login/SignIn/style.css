@@ -1,0 +1,35 @@
+.sign-in{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-input{
+    width: 250px;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 40px;
+    border-radius: 10px;
+}
+.icon{
+    position: relative;
+    left: 30px;
+    top:2px
+}
+.icon-eye{
+    position: relative;
+    left: -30px;
+    top:2px
+}
+.button{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.button-signin{
+    width: 30%;
+    height: 45px;
+    font-size: 18px;
+    border-radius: 20px;
+}

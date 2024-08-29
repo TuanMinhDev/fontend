@@ -1,6 +1,6 @@
 const Nagation = () =>{
     return (
-        <h1>Nagation</h1>
+        <div></div>
     )
 }
 export default Nagation;

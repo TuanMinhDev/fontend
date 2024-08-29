@@ -1,0 +1,56 @@
+.sign-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+label {
+  flex: 0 0 150px;
+  margin: 0;
+}
+
+.input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  
+}
+.button{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.button-signup{
+    width: 30%;
+    height: 45px;
+    font-size: 18px;
+    border-radius: 20px;
+}
+.input-pass{
+    flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+    width: 200px;
+    
+}
+.icon-eye{
+    position: relative;
+    left: -30px;
+    top:2px
+}

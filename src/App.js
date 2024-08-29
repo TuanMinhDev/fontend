@@ -9,21 +9,22 @@ import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import User from "./pages/User";
 import History from "./pages/History";
+
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/login" element={<Login />}>
-          <Route path="signin" element={<SignIn />} />
+          <Route index element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-        <Route path="/history" element={<History/>}/>
-        <Route path="/product" element={<Product/>}/>
-        <Route path="/user" element={<User/>}/>
-        <Route path="/admin" element={<Home/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/admin" element={<Home />} />
       </Routes>
     </div>
   );
