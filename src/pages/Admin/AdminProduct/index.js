@@ -43,19 +43,22 @@ const AdminProduct = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  useEffect(()=>{
+  useEffect(() => {
     const fetchData = async () => {
-        const category = ['shirt', 'pants', 'accessory', 'shoes']
-        try {
+      const categories = ['shirt', 'pants', 'accessory', 'shoes'];
+      const fetchedData = [];
+      try {
+        for (const category of categories) {
           const response = await axios.get(`http://localhost:4000/api/product/category/${category}`);
-          setData(response.data); 
-        } catch (error) {
-          console.error("Error fetching data:", error);
+          fetchedData.push(...response.data);
         }
-      };
-  
-      fetchData();
-  },[])
+        setData(fetchedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       <div className="row">
