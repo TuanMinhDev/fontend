@@ -7,6 +7,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 const SignUp = () => {
   const [eye, setEye] = useState(false);
   const [reEye, setReEye] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [info, setInfo] = useState({
     email: "",
     name: "",
@@ -31,7 +32,12 @@ const SignUp = () => {
       console.log(response);
       navigate("/login/signin");
     } catch (err) {
-      console.error(err);
+      if (err.response && err.response.status === 400 && err.response.data.message.includes("Email already exists")) {
+        setErrorMessage("Email đã tồn tại");
+      } else {
+        console.error(err);
+        setErrorMessage("lỗi");
+      }
     }
   };
 
@@ -103,6 +109,10 @@ const SignUp = () => {
           )}
         </div>
       </div>
+
+      
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
       <div className="button">
         <button onClick={handleSignUp} className="button-signup">
           Register

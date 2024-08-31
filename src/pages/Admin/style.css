@@ -1,0 +1,19 @@
+.admin{
+    display: flex;
+
+}
+.button{
+    width: 20%;
+    padding: 10px;
+    
+}
+.button-item{
+    width: 90%;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.admin-content{
+    padding: 10px;
+    border-left: 1px solid black;
+    margin-top: 20px;
+}

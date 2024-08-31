@@ -10,6 +10,8 @@ import Product from "./pages/Product";
 import User from "./pages/User";
 import History from "./pages/History";
 import Nagation from "./layout/Navigation/Navigation";
+import Admin from "./pages/Admin";
+import AdminProduct from "./pages/Admin/AdminProduct";
 const App = () => {
   return (
     <div>
@@ -27,8 +29,9 @@ const App = () => {
           <Route path="product" element={<Product />} />
           <Route path="user" element={<User />} />
         </Route>
-
-        <Route path="/admin" element={<Home />} />
+        <Route path="/admin" element={<Admin />}>
+          <Route index element={<AdminProduct />} />
+        </Route>
       </Routes>
     </div>
   );

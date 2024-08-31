@@ -16,15 +16,26 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(""); // State để lưu thông báo lỗi
+
   const handleSignIn = async () => {
     try {
-      const respone = await axios.post("http://localhost:4000/api/user/login", {
+      const response = await axios.post("http://localhost:4000/api/user/login", {
         email: info.email,
         password: info.password,
       });
-      console.log(respone);
-      navigate("/");
-    } catch {}
+
+      if (response.data.success) {
+        // Nếu đăng nhập thành công, chuyển đến trang chủ
+        navigate("/");
+      } else {
+        // Nếu đăng nhập thất bại, hiển thị thông báo lỗi
+        setError(response.data.message || "Invalid email or password");
+      }
+    } catch (error) {
+      // Xử lý lỗi phía server
+      setError("Error logging in. Please try again.");
+    }
   };
 
   const handleEye = () => {
@@ -44,7 +55,7 @@ const SignIn = () => {
             className="box-input"
             placeholder="Email"
             value={info.email}
-            onChange={(e) => setInfo({ ...e, email: e.target.value })}
+            onChange={(e) => setInfo({ ...info, email: e.target.value })}
           />
         </div>
         <div>
@@ -54,7 +65,7 @@ const SignIn = () => {
             type={eye === true ? "text" : "password"}
             placeholder="Password"
             value={info.password}
-            onChange={(e) => setInfo({ ...e, password: e.target.value })}
+            onChange={(e) => setInfo({ ...info, password: e.target.value })}
           />
           {eye === true ? (
             <EyeOutlined className="icon-eye" onClick={handleEye} />
@@ -62,6 +73,7 @@ const SignIn = () => {
             <EyeInvisibleOutlined className="icon-eye" onClick={handleEye} />
           )}
         </div>
+        {error && <p className="error-message">{error}</p>} {/* Hiển thị thông báo lỗi nếu có */}
       </div>
       <div className="button">
         <button onClick={handleSignIn} className="button-signin">
