@@ -5,7 +5,7 @@ import { Button, Modal } from "antd";
 import axios from "axios";
 const AdminProduct = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [data, setData] =useState([]);
+  const [data, setData] = useState([]);
   const [info, setInfo] = useState({
     name: "",
     price: "",
@@ -29,7 +29,7 @@ const AdminProduct = () => {
         name: "",
         price: "",
         imageLink: "",
-        category: ""
+        category: "",
       }));
       console.log(response);
     } catch (error) {
@@ -43,16 +43,17 @@ const AdminProduct = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const category = 'shirt';
-  useEffect(()=>{
-    axios.get(`http://localhost:4000/api/product/category/${category}`)
-    .then(response => {
+  const category = ['shirt', 'pants', 'accessory', 'shoes'];
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/api/product/category/${category}`)
+      .then((response) => {
         setData(response.data);
-    })
-    .catch(error =>{
+      })
+      .catch((error) => {
         console.error(error);
-    });
-  },[]);
+      });
+  }, []);
   return (
     <div>
       <div className="row">
@@ -81,34 +82,74 @@ const AdminProduct = () => {
           </div>
           <div className="form-group">
             <label>Link Img</label>
-            <input className="input"
-            type="imageLink"
-            value={info.imageLink}
-            onChange={(e)=> setInfo({...info, imageLink: e.target.value})} />
+            <input
+              className="input"
+              type="imageLink"
+              value={info.imageLink}
+              onChange={(e) => setInfo({ ...info, imageLink: e.target.value })}
+            />
           </div>
           <div className="form-group">
             <label>Thể loại</label>
-            <input className="input" 
-            type="category"
-            value={info.category}
-            onChange={(e)=> setInfo({...info, category: e.target.value})}/>
+            <input
+              className="input"
+              type="category"
+              value={info.category}
+              onChange={(e) => setInfo({ ...info, category: e.target.value })}
+            />
           </div>
           <div className="form-group">
             <label>Giá</label>
-            <input className="input" 
-            value={info.price}
-            type="price"
-            onChange={(e)=> setInfo({...info, price: e.target.value})}/>
+            <input
+              className="input"
+              value={info.price}
+              type="price"
+              onChange={(e) => setInfo({ ...info, price: e.target.value })}
+            />
           </div>
         </Modal>
       </div>
       <div>
-        <h2>Áo</h2>
-        {data.map( (item) => (
+        <div>
+          <h2>Áo</h2>
+          {data.map((item) => (
             <div>
-                <div>{item.name}</div>
+              <div>{item.name}</div>
             </div>
-        ))}
+          ))}
+        </div>
+        <div>
+          <h2>Áo</h2>
+          {data.map((item) => (
+            <div>
+              <div>{item.name}</div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h2>Quần</h2>
+          {data.map((item) => (
+            <div>
+              <div>{item.name}</div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h2>Phụ kiện</h2>
+          {data.map((item) => (
+            <div>
+              <div>{item.name}</div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h2>Giày</h2>
+          {data.map((item) => (
+            <div>
+              <div>{item.name}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
