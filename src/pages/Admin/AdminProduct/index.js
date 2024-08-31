@@ -43,17 +43,19 @@ const AdminProduct = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const category = ['shirt', 'pants', 'accessory', 'shoes'];
-  useEffect(() => {
-    axios
-      .get(`http://localhost:4000/api/product/category/${category}`)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  useEffect(()=>{
+    const fetchData = async () => {
+        const category = ['shirt', 'pants', 'accessory', 'shoes']
+        try {
+          const response = await axios.get(`http://localhost:4000/api/product/category/${category}`);
+          setData(response.data); 
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchData();
+  },[])
   return (
     <div>
       <div className="row">
@@ -111,44 +113,36 @@ const AdminProduct = () => {
       </div>
       <div>
         <div>
-          <h2>Áo</h2>
-          {data.map((item) => (
-            <div>
-              <div>{item.name}</div>
-            </div>
-          ))}
+            <h2>ÁO</h2>
+            {
+                data.filter(item => item.category === 'shirt').map((item) => (
+                  <div>{item.name}</div>
+                ))
+            }
         </div>
         <div>
-          <h2>Áo</h2>
-          {data.map((item) => (
-            <div>
-              <div>{item.name}</div>
-            </div>
-          ))}
+            <h2>Quần</h2>
+            {
+                data.filter(item => item.category === 'pants').map((item) => (
+                  <div>{item.name}</div>
+                ))
+            }
         </div>
         <div>
-          <h2>Quần</h2>
-          {data.map((item) => (
-            <div>
-              <div>{item.name}</div>
-            </div>
-          ))}
+            <h2>Phụ kiện</h2>
+            {
+                data.filter(item => item.category === 'accessory').map((item) => (
+                  <div>{item.name}</div>
+                ))
+            }
         </div>
         <div>
-          <h2>Phụ kiện</h2>
-          {data.map((item) => (
-            <div>
-              <div>{item.name}</div>
-            </div>
-          ))}
-        </div>
-        <div>
-          <h2>Giày</h2>
-          {data.map((item) => (
-            <div>
-              <div>{item.name}</div>
-            </div>
-          ))}
+            <h2>Giày</h2>
+            {
+                data.filter(item => item.category === 'shoes').map((item) => (
+                  <div>{item.name}</div>
+                ))
+            }
         </div>
       </div>
     </div>

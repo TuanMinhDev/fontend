@@ -10,7 +10,7 @@ const Nagation = () => {
   const items = [
     {
       key: "1",
-      label: <Link>Thông tin cá nhân</Link>,
+      label: <Link to="/user">Thông tin cá nhân</Link>,
     },
     {
       key: "2",
