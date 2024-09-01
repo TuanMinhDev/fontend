@@ -45,11 +45,13 @@ const AdminProduct = () => {
   };
   useEffect(() => {
     const fetchData = async () => {
-      const categories = ['shirt', 'pants', 'accessory', 'shoes'];
+      const categories = ["shirt", "pants", "accessory", "shoes"];
       const fetchedData = [];
       try {
         for (const category of categories) {
-          const response = await axios.get(`http://localhost:4000/api/product/category/${category}`);
+          const response = await axios.get(
+            `http://localhost:4000/api/product/category/${category}`
+          );
           fetchedData.push(...response.data);
         }
         setData(fetchedData);
@@ -59,6 +61,7 @@ const AdminProduct = () => {
     };
     fetchData();
   }, []);
+  const handle = (category) => { setInfo({ ...info, category: category }) }
   return (
     <div>
       <div className="row">
@@ -96,12 +99,16 @@ const AdminProduct = () => {
           </div>
           <div className="form-group">
             <label>Thể loại</label>
-            <input
+            <div onClick={()=> handle('shirt')}>shirt</div>
+            <div onClick={()=> handle('pants')}>pants</div>
+            <div onClick={()=> handle('accessory')}>accessory</div>
+            <div onClick={()=> handle('shoes')}>shoes</div>
+            {/* <input
               className="input"
               type="category"
               value={info.category}
               onChange={(e) => setInfo({ ...info, category: e.target.value })}
-            />
+            /> */}
           </div>
           <div className="form-group">
             <label>Giá</label>
@@ -116,36 +123,68 @@ const AdminProduct = () => {
       </div>
       <div>
         <div>
-            <h2>ÁO</h2>
-            {
-                data.filter(item => item.category === 'shirt').map((item) => (
-                  <div>{item.name}</div>
-                ))
-            }
+          <h2>ÁO</h2>
+          {data
+            .filter((item) => item.category === "shirt")
+            .map((item) => (
+              <div key={item.id} className="product-home">
+                <img
+                  src={item.imageLink}
+                  alt="img"
+                  className="product-home-img"
+                />
+                <p className="product-home-name">{item.name}</p>
+                <p className="product-home-price">Giá: {item.price}</p>
+              </div>
+            ))}
         </div>
         <div>
-            <h2>Quần</h2>
-            {
-                data.filter(item => item.category === 'pants').map((item) => (
-                  <div>{item.name}</div>
-                ))
-            }
+          <h2>Quần</h2>
+          {data
+            .filter((item) => item.category === "pants")
+            .map((item) => (
+              <div key={item.id} className="product-home">
+                <img
+                  src={item.imageLink}
+                  alt="img"
+                  className="product-home-img"
+                />
+                <p className="product-home-name">{item.name}</p>
+                <p className="product-home-price">Giá: {item.price}</p>
+              </div>
+            ))}
         </div>
         <div>
-            <h2>Phụ kiện</h2>
-            {
-                data.filter(item => item.category === 'accessory').map((item) => (
-                  <div>{item.name}</div>
-                ))
-            }
+          <h2>Phụ kiện</h2>
+          {data
+            .filter((item) => item.category === "accessory")
+            .map((item) => (
+              <div key={item.id} className="product-home">
+                <img
+                  src={item.imageLink}
+                  alt="img"
+                  className="product-home-img"
+                />
+                <p className="product-home-name">{item.name}</p>
+                <p className="product-home-price">Giá: {item.price}</p>
+              </div>
+            ))}
         </div>
         <div>
-            <h2>Giày</h2>
-            {
-                data.filter(item => item.category === 'shoes').map((item) => (
-                  <div>{item.name}</div>
-                ))
-            }
+          <h2>Giày</h2>
+          {data
+            .filter((item) => item.category === "shoes")
+            .map((item) => (
+              <div key={item.id} className="product-home">
+                <img
+                  src={item.imageLink}
+                  alt="img"
+                  className="product-home-img"
+                />
+                <p className="product-home-name">{item.name}</p>
+                <p className="product-home-price">Giá: {item.price}</p>
+              </div>
+            ))}
         </div>
       </div>
     </div>

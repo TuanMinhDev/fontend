@@ -1,36 +1,84 @@
-.navigation{
+.navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    border-radius:20px ;
-}
-.logo{
-    position: relative;
+    position: sticky;
+    top: 0; /* Đảm bảo phần tử dính ở trên cùng của cửa sổ khi cuộn */
+    background-color: #fff; /* Thêm màu nền để nổi bật hơn khi cuộn */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Tạo hiệu ứng nổi */
+    padding: 10px; /* Thêm padding để tạo không gian */
+    height: 70px;
+  }
+  
+  .logo {
     text-decoration: none;
     color: black;
-    left: 70px;
-}
-.link-navigation {
+  }
+  
+  .link-navigation {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
-
-.link-navigation a {
+    flex-grow: 1; /* Đảm bảo liên kết chiếm không gian còn lại */
+    justify-content: center;
+  }
+  
+  .link-navigation a {
     text-decoration: none;
     color: #000;
     padding: 0 15px;
-}
-.size{
+  }
+  
+  .size {
     font-size: 20px;
-}
-.size-icon{
+  }
+  
+  .size-icon {
     font-size: 25px;
-    margin-right: 50px;
-}
-.icon-navigation{
+    margin-right: 20px; /* Điều chỉnh khoảng cách giữa các icon */
+  }
+  
+  .icon-navigation {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-}
+    align-items: center; /* Căn chỉnh các icon dọc theo trục y */
+  }
+  
+  .footer {
+    display: flex;
+    flex-wrap: wrap; /* Đảm bảo các phần tử có thể xuống dòng khi cần */
+    justify-content: space-between; /* Căn chỉnh các phần tử */
+    padding: 20px;
+    background-color: #f8f8f8; /* Thêm màu nền để phân biệt footer */
+    position: fixed;
+    bottom: 0; /* Đặt footer ở dưới cùng của cửa sổ */
+    left: 0; /* Đặt footer ở cạnh trái của cửa sổ */
+    width: 100%; /* Đảm bảo footer chiếm toàn bộ chiều rộng của cửa sổ */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ để tạo chiều sâu */
+    z-index: 1000; /* Đảm bảo footer nằm trên các phần tử khác */
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px; /* Đảm bảo các phần tử không quá nhỏ khi thu nhỏ cửa sổ */
+    margin: 10px; /* Điều chỉnh khoảng cách giữa các section */
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333; /* Màu chữ tiêu đề */
+  }
+  
+  .footer-section p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666; /* Màu chữ nội dung */
+  }
+  
+  .footer-section p:hover {
+    color: #000; /* Đổi màu khi hover để tăng khả năng tương tác */
+    cursor: pointer;
+  }
+  
+  .footer-section p:last-child {
+    margin-bottom: 0;
+  }
+  
