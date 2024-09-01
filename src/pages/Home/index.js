@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./style.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const img = [
@@ -70,11 +71,13 @@ const Home = () => {
         <h2 className="letter">Sản Phẩm Mới</h2>
         <div className="item">
           {dataNew.map((item) => (
-            <div key={item.id} className="boxItem">
-              <img src={item.imageLink} alt={item.name} className="imgItem" />
-              <p className="itemName">{item.name}</p>
-              <p className="itemPrice">Giá: {item.price}₫</p>
-            </div>
+            <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+              <div key={item.id} className="boxItem">
+                <img src={item.imageLink} alt={item.name} className="imgItem" />
+                <p className="itemName">{item.name}</p>
+                <p className="itemPrice">Giá: {item.price}₫</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -85,11 +88,13 @@ const Home = () => {
             {data
               .filter((item) => item.category === "shirt")
               .map((item) => (
-                <div key={item.id} className="boxItem">
-                  <img src={item.imageLink} alt="img" className="imgItem" />
-                  <p className="itemName">{item.name}</p>
-                  <p className="itemPrice">Giá: {item.price}₫</p>
-                </div>
+                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                  <div key={item.id} className="boxItem">
+                    <img src={item.imageLink} alt="img" className="imgItem" />
+                    <p className="itemName">{item.name}</p>
+                    <p className="itemPrice">Giá: {item.price}₫</p>
+                  </div>
+                </Link>
               ))}
           </div>
         </div>
@@ -99,11 +104,13 @@ const Home = () => {
             {data
               .filter((item) => item.category === "pants")
               .map((item) => (
-                <div key={item.id} className="boxItem">
-                  <img src={item.imageLink} alt="img" className="imgItem" />
-                  <p className="itemName">{item.name}</p>
-                  <p className="itemPrice">Giá: {item.price}₫</p>
-                </div>
+                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                  <div key={item.id} className="boxItem">
+                    <img src={item.imageLink} alt="img" className="imgItem" />
+                    <p className="itemName">{item.name}</p>
+                    <p className="itemPrice">Giá: {item.price}₫</p>
+                  </div>
+                </Link>
               ))}
           </div>
         </div>
@@ -113,11 +120,13 @@ const Home = () => {
             {data
               .filter((item) => item.category === "accessory")
               .map((item) => (
-                <div key={item.id} className="boxItem">
-                  <img src={item.imageLink} alt="img" className="imgItem" />
-                  <p className="itemName">{item.name}</p>
-                  <p className="itemPrice">Giá: {item.price}₫</p>
-                </div>
+                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                  <div key={item.id} className="boxItem">
+                    <img src={item.imageLink} alt="img" className="imgItem" />
+                    <p className="itemName">{item.name}</p>
+                    <p className="itemPrice">Giá: {item.price}₫</p>
+                  </div>
+                </Link>
               ))}
           </div>
         </div>
@@ -127,11 +136,13 @@ const Home = () => {
             {data
               .filter((item) => item.category === "shoes")
               .map((item) => (
-                <div key={item.id} className="boxItem">
-                  <img src={item.imageLink} alt="img" className="imgItem" />
-                  <p className="itemName">{item.name}</p>
-                  <p className="itemPrice">Giá: {item.price}₫</p>
-                </div>
+                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                  <div key={item.id} className="boxItem">
+                    <img src={item.imageLink} alt="img" className="imgItem" />
+                    <p className="itemName">{item.name}</p>
+                    <p className="itemPrice">Giá: {item.price}₫</p>
+                  </div>
+                </Link>
               ))}
           </div>
         </div>

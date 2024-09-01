@@ -79,3 +79,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.productLink {
+  text-decoration: none; /* Tắt gạch chân */
+  color: inherit; /* Để giữ màu sắc như của các phần tử con */
+}
+
+.productLink:hover {
+  text-decoration: none; /* Đảm bảo khi hover cũng không hiện gạch chân */
+}
