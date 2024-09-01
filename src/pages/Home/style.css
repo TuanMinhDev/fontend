@@ -58,7 +58,6 @@ margin-bottom: 20px;
   text-align: center;
   color: #333;
   margin-bottom: 8px;
-  /* No height restriction to accommodate longer product names */
 }
 
 .itemPrice {
@@ -67,16 +66,15 @@ margin-bottom: 20px;
   font-weight: bold;
   text-align: center;
   margin-top: auto;
-  /* Ensure there's enough space for the price */
-  min-height: 30px; /* Minimum height to ensure consistency */
+  min-height: 30px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Ensure price takes full width */
+  width: 100%; 
 }
 
 .boxItem {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute space between image, name, and price */
+  justify-content: space-between; 
 }
