@@ -9,9 +9,9 @@ import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import User from "./pages/User";
 import History from "./pages/History";
-import Nagation from "./layout/Navigation/Navigation";
 import Admin from "./pages/Admin";
 import AdminProduct from "./pages/Admin/AdminProduct";
+import Layout from "./layout";
 const App = () => {
   return (
     <div>
@@ -21,7 +21,7 @@ const App = () => {
           <Route path="signup" element={<SignUp />} />
         </Route>
 
-        <Route path="/" element={<Nagation />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="cart" element={<Cart />} />
           <Route path="contact" element={<Contact />} />

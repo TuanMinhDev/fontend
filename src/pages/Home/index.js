@@ -86,11 +86,7 @@ const Home = () => {
               .filter((item) => item.category === "shirt")
               .map((item) => (
                 <div key={item.id} className="boxItem">
-                  <img
-                    src={item.imageLink}
-                    alt="img"
-                    className="imgItem"
-                  />
+                  <img src={item.imageLink} alt="img" className="imgItem" />
                   <p className="itemName">{item.name}</p>
                   <p className="itemPrice">Giá: {item.price}₫</p>
                 </div>
@@ -104,11 +100,7 @@ const Home = () => {
               .filter((item) => item.category === "pants")
               .map((item) => (
                 <div key={item.id} className="boxItem">
-                  <img
-                    src={item.imageLink}
-                    alt="img"
-                    className="imgItem"
-                  />
+                  <img src={item.imageLink} alt="img" className="imgItem" />
                   <p className="itemName">{item.name}</p>
                   <p className="itemPrice">Giá: {item.price}₫</p>
                 </div>
@@ -122,11 +114,7 @@ const Home = () => {
               .filter((item) => item.category === "accessory")
               .map((item) => (
                 <div key={item.id} className="boxItem">
-                  <img
-                    src={item.imageLink}
-                    alt="img"
-                    className="imgItem"
-                  />
+                  <img src={item.imageLink} alt="img" className="imgItem" />
                   <p className="itemName">{item.name}</p>
                   <p className="itemPrice">Giá: {item.price}₫</p>
                 </div>
@@ -140,11 +128,7 @@ const Home = () => {
               .filter((item) => item.category === "shoes")
               .map((item) => (
                 <div key={item.id} className="boxItem">
-                  <img
-                    src={item.imageLink}
-                    alt="img"
-                    className="imgItem"
-                  />
+                  <img src={item.imageLink} alt="img" className="imgItem" />
                   <p className="itemName">{item.name}</p>
                   <p className="itemPrice">Giá: {item.price}₫</p>
                 </div>
