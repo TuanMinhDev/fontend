@@ -9,14 +9,6 @@
 .row {
   display: flex;
 }
-.product-new {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  flex-direction: column;
-  margin-top: -10px;
-}
 .item {
   width: 100%;
   display: flex;
@@ -25,6 +17,7 @@
   flex-wrap: wrap;
   padding: 20px;
   margin-top: -20px;
+  overflow: hidden;
 }
 
 .boxItem {
@@ -36,14 +29,15 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
+  height: 400px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; 
 }
 
 .boxItem:hover {
-  transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
 }
+
 
 .imgItem {
   width: 100%;
@@ -80,10 +74,10 @@
   justify-content: space-between;
 }
 .productLink {
-  text-decoration: none; /* Tắt gạch chân */
-  color: inherit; /* Để giữ màu sắc như của các phần tử con */
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .productLink:hover {
-  text-decoration: none; /* Đảm bảo khi hover cũng không hiện gạch chân */
+  text-decoration: none;
 }

@@ -38,38 +38,41 @@ const Navigation = () => {
   ];
 
   return (
-      <div className="navigation">
-        <h1>
-          <Link className="logo" to="/">
-            STORE
-          </Link>
-        </h1>
-        <div className="link-navigation">
-          <NavLink to="/" className="size">
-            Home
-          </NavLink>
-          <NavLink to="/product" className="size">
-            Product
-          </NavLink>
-          <NavLink to="/history" className="size">
-            History
-          </NavLink>
-          <NavLink to="/contact" className="size">
-            Contact
-          </NavLink>
-        </div>
-        <div className="icon-navigation">
-          <BellOutlined className="size-icon" />
-          <ShoppingCartOutlined className="size-icon" />
-          <Dropdown
-            menu={{
-              items,
-            }}
-          >
-            <UserOutlined className="size-icon" />
-          </Dropdown>
-        </div>
+    <div className="navigation">
+      <h1>
+        <Link className="logo" to="/">
+          STORE
+        </Link>
+      </h1>
+      <div className="link-navigation">
+        <NavLink to="/" className="size">
+          Home
+        </NavLink>
+        <NavLink to="/product" className="size">
+          Product
+        </NavLink>
+        <NavLink to="/history" className="size">
+          History
+        </NavLink>
+        <NavLink to="/contact" className="size">
+          Contact
+        </NavLink>
       </div>
+      <div className="icon-navigation">
+        <BellOutlined className="size-icon" />
+        <Link to="cart" >
+          <ShoppingCartOutlined className="size-icon" />
+        </Link>
+
+        <Dropdown
+          menu={{
+            items,
+          }}
+        >
+          <UserOutlined className="size-icon" />
+        </Dropdown>
+      </div>
+    </div>
   );
 };
 
