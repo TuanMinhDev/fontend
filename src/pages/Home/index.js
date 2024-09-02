@@ -71,7 +71,7 @@ const Home = () => {
         <h2 className="letter">Sản Phẩm Mới</h2>
         <div className="item">
           {dataNew.map((item) => (
-            <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+            <Link to={`product_details/${item.id}`} className="productLink"> 
               <div key={item.id} className="boxItem">
                 <img src={item.imageLink} alt={item.name} className="imgItem" />
                 <p className="itemName">{item.name}</p>
@@ -88,7 +88,7 @@ const Home = () => {
             {data
               .filter((item) => item.category === "shirt")
               .map((item) => (
-                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                <Link to={`product_details/${item.id}`} className="productLink"> 
                   <div key={item.id} className="boxItem">
                     <img src={item.imageLink} alt="img" className="imgItem" />
                     <p className="itemName">{item.name}</p>
@@ -104,7 +104,7 @@ const Home = () => {
             {data
               .filter((item) => item.category === "pants")
               .map((item) => (
-                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                <Link to={`product_details/${item.id}`} className="productLink"> 
                   <div key={item.id} className="boxItem">
                     <img src={item.imageLink} alt="img" className="imgItem" />
                     <p className="itemName">{item.name}</p>
@@ -120,7 +120,7 @@ const Home = () => {
             {data
               .filter((item) => item.category === "accessory")
               .map((item) => (
-                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                <Link to={`product_details/${item.id}`} className="productLink"> 
                   <div key={item.id} className="boxItem">
                     <img src={item.imageLink} alt="img" className="imgItem" />
                     <p className="itemName">{item.name}</p>
@@ -136,7 +136,7 @@ const Home = () => {
             {data
               .filter((item) => item.category === "shoes")
               .map((item) => (
-                <Link to={`product_details/${item.id}`} className="productLink"> {/* Sửa lại đường dẫn */}
+                <Link to={`product_details/${item.id}`} className="productLink"> 
                   <div key={item.id} className="boxItem">
                     <img src={item.imageLink} alt="img" className="imgItem" />
                     <p className="itemName">{item.name}</p>
