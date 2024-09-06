@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import useSelection from "antd/es/table/hooks/useSelection";
-
+import { fetchProduct } from "../../actions/actionProduct";
 const Product = () => {
   // const [data, setData] = useState([]);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Product = () => {
     // };
 
     // fetchAllProducts();
-    dispatch(product());
+    dispatch(fetchProduct());
   }, [dispatch]);
 
   const handleAllProduct = async () => {
@@ -105,7 +105,7 @@ const Product = () => {
               </Link>
             ))} */}
             {product && product.map((item)=>{
-              <div >{item.name}</div>
+              <div id={item.id}>{item.name}</div>
             })}
           </div>
         </div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const product = () => {
+export const fetchProduct = () => {
     return async (dispatch) => {
       try {
         const response = await axios.get(
