@@ -14,18 +14,18 @@ export const GetCart = () => {
   };
 };
 
-// Action để thêm sản phẩm vào giỏ hàng
+
 export const addToCart = (product) => {
   return async (dispatch) => {
     try {
       const response = await axios.post("http://localhost:4000/api/cart/cart", {
-        product, // Truyền dữ liệu sản phẩm để thêm vào giỏ hàng
+        product, 
       });
 
-      // Dispatch hành động để cập nhật giỏ hàng sau khi thêm sản phẩm
+      
       dispatch({
         type: "ADD_TO_CART",
-        payload: product, // Sản phẩm vừa thêm vào giỏ hàng
+        payload: product, 
       });
     } catch (error) {
       console.log(error);
@@ -40,10 +40,10 @@ export const deleteFromCart = (productId) => {
         `http://localhost:4000/api/cart/cart/${productId}`
       );
 
-      // Sau khi xóa thành công, dispatch action để cập nhật giỏ hàng
+      
       dispatch({
         type: "DELETE_FROM_CART",
-        payload: productId, // Truyền ID của sản phẩm đã bị xóa
+        payload: productId, 
       });
     } catch (error) {
       console.log(error);
