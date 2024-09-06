@@ -8,6 +8,7 @@ const ProductDetails = () => {
   const [productData, setProductData] = useState(null);  // Trạng thái cho chi tiết sản phẩm
   const [relatedProducts, setRelatedProducts] = useState([]);  // Trạng thái cho danh sách sản phẩm
   const [count, setCount] = useState(1);
+  const [isAdding, setIsAdding] = useState(false); // Trạng thái cho quá trình thêm vào giỏ hàng
 
   useEffect(() => {
     const handleProductDetails = async () => {
@@ -57,6 +58,23 @@ const ProductDetails = () => {
     }
   };
 
+  const handleAddToCart = async () => {
+    setIsAdding(true);
+    try {
+      const response = await axios.post("http://localhost:4000/api/cart/cart", {
+        productId: productData._id,
+        quantity: count,
+      });
+      alert("Sản phẩm đã được thêm vào giỏ hàng!");
+      console.log(response);
+    } catch (error) {
+      console.error("Lỗi khi thêm vào giỏ hàng:", error);
+      alert("Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng. Vui lòng thử lại!");
+    } finally {
+      setIsAdding(false);
+    }
+  };
+
   return (
     <div className="productDetails">
       <div className="boxproductDetails">
@@ -77,13 +95,19 @@ const ProductDetails = () => {
           <div className="soLuong">
             <label className="soLuongFontSize">Số lượng</label>
             <div className="boxCount">
-              <button className="boxButtonCount" onClick={handlePlus}>+</button>
-              <div className="count">{count}</div>
               <button className="boxButtonCount" onClick={handleMinus}>-</button>
+              <div className="count">{count}</div>
+              <button className="boxButtonCount" onClick={handlePlus}>+</button>
             </div>
           </div>
-          <div>
-            <button className="buttonPay">Thêm giỏ hàng</button>
+          <div className="buttonGroup">
+            <button
+              className="buttonPay"
+              onClick={handleAddToCart}
+              disabled={isAdding}
+            >
+              {isAdding ? "Đang thêm..." : "Thêm vào giỏ hàng"}
+            </button>
             <button className="buttonPay">Mua ngay</button>
           </div>
         </div>
@@ -102,9 +126,9 @@ const ProductDetails = () => {
           {relatedProducts
             .filter((item) => item.category === productData.category)
             .map((item) => (
-              <Link to={`${item._id}`} key={item._id} className="productLink"> 
+              <Link to={`/product_details/${item._id}`} key={item._id} className="productLink"> 
                 <div className="boxItem">
-                  <img src={item.imageLink} alt="img" className="imgItem" />
+                  <img src={item.imageLink} alt={item.name} className="imgItem" />
                   <p className="itemName">{item.name}</p>
                   <p className="itemPrice">Giá: {item.price}₫</p>
                 </div>
