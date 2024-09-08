@@ -1,78 +1,48 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import './style.css'; 
+import { useEffect, useState } from "react";
+import "./style.css";
+import axios from "axios";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchCartItems = async () => {
+    const handle = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/cart/cart');
-        setCartItems(response.data);
+        
+        const response = await axios.get("http://localhost:4000/api/cart/cart");
+        const cartItems = response.data;
+
+        // Lấy dữ liệu chi tiết từng sản phẩm từ productId
+        const productRequests = cartItems.map((item) =>
+          axios.get(`http://localhost:4000/api/product/products/${item.productId}`)
+        );
+        
+        // Chờ tất cả các request hoàn thành
+        const productResponses = await Promise.all(productRequests);
+
+        // Kết hợp dữ liệu cart và product
+        const productsData = productResponses.map((res) => res.data);
+        setData(productsData);
       } catch (error) {
-        console.error("Error fetching cart items:", error);
-      } finally {
-        setLoading(false);
+        console.log(error);
       }
     };
 
-    fetchCartItems();
-  }, []);
-
-  const handleRemoveItem = async (id) => {
-    try {
-      await axios.delete(`http://localhost:4000/api/cart/cart/${id}`);
-      setCartItems(cartItems.filter(item => item._id !== id));
-    } catch (error) {
-      console.error("Error removing item:", error);
-    }
-  };
-
-  const handleUpdateQuantity = async (id, quantity) => {
-    try {
-      await axios.put(`http://localhost:4000/api/cart/cart`, { id, quantity });
-      setCartItems(cartItems.map(item =>
-        item._id === id ? { ...item, quantity } : item
-      ));
-    } catch (error) {
-      console.error("Error updating quantity:", error);
-    }
-  };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    handle();
+  }, []);  
 
   return (
-    <div className="cart">
-      <h1>Giỏ Hàng</h1>
-      {cartItems.length === 0 ? (
-        <p>Giỏ hàng của bạn đang trống.</p>
-      ) : (
-        <div>
-          {cartItems.map(item => (
-            <div key={item._id} className="cart-item">
-              <img src={item.imageLink} alt={item.name} className="cart-item-image" />
-              <div className="cart-item-details">
-                <Link to={`/product/${item._id}`} className="cart-item-name">{item.name}</Link>
-                <p className="cart-item-price">{item.price}₫</p>
-                <div className="cart-item-quantity">
-                  <button onClick={() => handleUpdateQuantity(item._id, item.quantity - 1)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => handleUpdateQuantity(item._id, item.quantity + 1)}>+</button>
-                </div>
-                <button onClick={() => handleRemoveItem(item._id)} className="remove-item">Xóa</button>
-              </div>
-            </div>
-          ))}
-          <div className="cart-summary">
-            <p>Tổng tiền: {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}₫</p>
-            <button className="checkout-button">Thanh toán</button>
+    <div>
+      <div>Giỏ hàng</div>
+      {data.length > 0 ? (
+        data.map((item) => (
+          <div key={item.productId}>
+            <p>{item.name}</p>
+            <p>Giá: {item.price}</p>
           </div>
-        </div>
+        ))
+      ) : (
+        <p>Giỏ hàng trống</p>
       )}
     </div>
   );

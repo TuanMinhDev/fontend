@@ -112,30 +112,17 @@
     font-weight: 600;
     margin-bottom: 10px;
 }
-
-.pricePlus {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .itemPrice {
     font-size: 16px;
     font-weight: 500;
     color: #333;
 }
-
-.plusProduct {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.plusProduct:hover {
-    background-color: #0056b3;
+.plusCart{
+    position: relative;
+    top:-60px;
+    left: 220px;
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
 }
