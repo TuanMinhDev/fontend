@@ -37,6 +37,7 @@ const Cart = () => {
       {data.length > 0 ? (
         data.map((item) => (
           <div key={item.productId}>
+            <img src={item.imageLink}/>
             <p>{item.name}</p>
             <p>Giá: {item.price}</p>
           </div>
