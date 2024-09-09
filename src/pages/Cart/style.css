@@ -1,0 +1,40 @@
+.cartItem{
+    margin-top: 20px;
+    display: flex;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+.imgCart{
+    width: 120px;
+    height: 120px;
+}
+.contentCart{
+    margin-left: 20px;
+    margin-top: -12px;
+    
+}
+.parameter{
+    display: flex;
+    
+}
+.sizeCart{
+    margin-left: 120px;
+    margin-top: 16px;
+}
+.quantityCart{
+    margin-left: 200px;
+    display: flex;
+    margin-top: 10px;
+}
+.buttonQuantity{
+    width: 50px;
+    height: 30px;
+}
+.quantity{
+    font-size: 22px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

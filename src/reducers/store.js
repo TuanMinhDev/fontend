@@ -4,7 +4,7 @@ import { thunk } from "redux-thunk";
 const initialState = {
   dataProduct: [],
   dataCart: [],
-  productDetails:[],
+  productDetails: [],
 };
 
 const productRedux = (state = initialState, action) => {
@@ -20,11 +20,26 @@ const productRedux = (state = initialState, action) => {
     case "GET_CART":
       return { ...state, dataCart: action.payload };
     case "ADD_TO_CART":
-      return { ...state, dataCart: [...state.dataCart, action.payload] };
+      const existingItemIndex = state.dataCart.findIndex(
+        (item) =>
+          item.productId === action.payload.productId &&
+          item.size === action.payload.size
+      );
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...state.dataCart];
+        updatedCart[existingItemIndex].quantity += action.payload.quantity;
+        return { ...state, dataCart: updatedCart };
+      } else {
+        return { ...state, dataCart: [...state.dataCart, action.payload] };
+      }
     case "DELETE_FROM_CART":
       return {
         ...state,
-        dataCart: state.dataCart.filter((item) => item.id !== action.payload),
+        dataCart: state.dataCart.filter(
+          (item) =>
+            item.productId !== action.payload.productId ||
+            item.size !== action.payload.size
+        ),
       };
     default:
       return state;

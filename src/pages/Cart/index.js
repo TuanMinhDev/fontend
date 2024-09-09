@@ -1,49 +1,76 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./style.css";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getCart, updateQuantity } from "../../actions/actionCart";
 
 const Cart = () => {
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.dataCart);
 
   useEffect(() => {
-    const handle = async () => {
-      try {
-        
-        const response = await axios.get("http://localhost:4000/api/cart/cart");
-        const cartItems = response.data;
+    dispatch(getCart());
+  }, [dispatch]);
 
-        // Lấy dữ liệu chi tiết từng sản phẩm từ productId
-        const productRequests = cartItems.map((item) =>
-          axios.get(`http://localhost:4000/api/product/products/${item.productId}`)
-        );
-        
-        // Chờ tất cả các request hoàn thành
-        const productResponses = await Promise.all(productRequests);
+  const handleIncreaseQuantity = (productId, size, quantity) => {
+    dispatch(updateQuantity(productId, size, quantity + 1));
+  };
 
-        // Kết hợp dữ liệu cart và product
-        const productsData = productResponses.map((res) => res.data);
-        setData(productsData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    handle();
-  }, []);  
+  const handleDecreaseQuantity = (productId, size, quantity) => {
+    if (quantity > 1) {
+      dispatch(updateQuantity(productId, size, quantity - 1));
+    }
+  };
 
   return (
     <div>
-      <div>Giỏ hàng</div>
       {data.length > 0 ? (
         data.map((item) => (
-          <div key={item.productId}>
-            <img src={item.imageLink}/>
-            <p>{item.name}</p>
-            <p>Giá: {item.price}</p>
+          <div className="cartItem" key={item.productId}>
+            <img
+              className="imgCart"
+              src={item.productId.imageLink}
+              alt={item.name}
+            />
+            <div className="contentCart">
+              <p className="nameCart">{item.productId.name}</p>
+              <div className="parameter">
+                <p className="priceCart">Giá: {item.productId.price}đ</p>
+                <div className="sizeCart">Size: {item.size}</div>
+                <div className="quantityCart">
+                  <button
+                    className="buttonQuantity"
+                    onClick={() =>
+                      handleIncreaseQuantity(
+                        item.productId,
+                        item.size,
+                        item.quantity
+                      )
+                    }
+                  >
+                    +
+                  </button>
+                  <div className="quantity">{item.quantity}</div>
+                  <button
+                    className="buttonQuantity"
+                    onClick={() =>
+                      handleDecreaseQuantity(
+                        item.productId,
+                        item.size,
+                        item.quantity
+                      )
+                    }
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         ))
       ) : (
-        <p>Giỏ hàng trống</p>
+        <div>
+          <p>Giỏ hàng trống</p>
+        </div>
       )}
     </div>
   );
