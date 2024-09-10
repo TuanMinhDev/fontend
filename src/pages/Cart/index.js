@@ -14,12 +14,13 @@ const Cart = () => {
   const handleIncreaseQuantity = (productId, size, quantity) => {
     dispatch(updateQuantity(productId, size, quantity + 1));
   };
-
+  
   const handleDecreaseQuantity = (productId, size, quantity) => {
     if (quantity > 1) {
       dispatch(updateQuantity(productId, size, quantity - 1));
     }
   };
+  
 
   return (
     <div>
